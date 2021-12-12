@@ -1,29 +1,46 @@
 import { signOut, useSession } from "next-auth/react";
 import { ChevronDownIcon } from '@heroicons/react/outline'
 import Sidebar from './Sidebar'
+import { useEffect } from "react";
+import {shuffle} from "lodash";
+import { useState } from "react";
 
 
-
+const colors=[
+    "from-indigo-500",
+    "from-blue-500",
+    "from-green-500",
+    "from-red-500",
+    "from-yellow-500",
+    "from-purple-500",
+    "from-indigo-500",
+    "from-pink-500" 
+];
 
 
 function Center() {
+
     const { data:session} = useSession();
+    const[color, setColor] = useState(null)
+
+    useEffect(() =>{
+        setColor (shuffle(colors).pop()) , []
+    });
+     
     return (
         <div className='flex-grow'>
-           <header className='absolute top-5 right-8  '>
-               <div className='flex items-center bg-black space-x-3 opacity-90
-                     hover:opacity-78 cursor-pointer rounded-full 
-                    p-1 pr-2'>
-                   <img className='rounded-full w-10 h-10' src ={session?.user.image} />
+           <header className='absolute top-5 right-8'>
+               <div className= "flex items-center bg-red-400 space-x-3 opacity-88 hover:opacity-75 cursor-pointer rounded-full p-1 pr-2" >
+                   <img className='ml-1 rounded-full w-8 h-8.3' src ={session?.user.image} />
                
 
                <h2 className="text-white">{session?.user.name}</h2>
-               <ChevronDownIcon className='h-5 w-5' />
+               <ChevronDownIcon className='h-4 w-5 p-0.34' />
                </div>
 
            </header>
 
-           <section className={`flex items-end space-x-7 bg-gradient-to-b to-black from-red-500
+           <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color}
             h-80 text-white padding-8 `}>
                 
             </section>

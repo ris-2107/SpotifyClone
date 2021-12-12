@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Center from '../components/Center'
 import Sidebar from '../components/Sidebar'
 
-// to check if added or not in server git
+// to check if added or not in server git --> in real??
 
 export default function Home() {
   return (

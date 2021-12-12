@@ -1,5 +1,5 @@
 import react, { useEffect, useState } from "react"
-// to check if added or not in server git
+// to check if added or not in server git -- is it upadted
 
 import {
     HomeIcon,
@@ -9,6 +9,8 @@ import {
     HeartIcon,
     RssIcon,
     LogoutIcon
+    // yet another -- is it updated really?
+
     
 } from "@heroicons/react/outline"
 import { signOut, useSession } from "next-auth/react";

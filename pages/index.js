@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Center from '../components/Center'
 import Sidebar from '../components/Sidebar'
 
+// to check if added or not in server git
+
 export default function Home() {
   return (
     <div className="bg-black h-screen overflow-hidden">

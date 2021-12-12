@@ -1,4 +1,6 @@
 import react, { useEffect, useState } from "react"
+// to check if added or not in server git
+
 import {
     HomeIcon,
     SearchIcon,

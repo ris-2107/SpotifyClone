@@ -1,5 +1,6 @@
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
+// to check if added or not in server git
 
 export async function middleware(req) {
     //the below token will exist only if the user is logged in

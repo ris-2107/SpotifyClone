@@ -4,8 +4,9 @@ import Sidebar from './Sidebar'
 import { useEffect } from "react";
 import {shuffle} from "lodash";
 import { useState } from "react";
-
-
+import { useRecoilState, useRecoilValue } from "recoil"
+import { playlistIdState, playlistState } from "../.next/atoms/playlistAtom";
+import useSpotify from "../hooks/useSpotify";
 
 const colors=[
     "from-indigo-500",
@@ -19,15 +20,30 @@ const colors=[
 ];
 
 
+
 function Center() {
 
     const { data:session} = useSession();
-    const[color, setColor] = useState(null)
+    const[color, setColor] = useState(null);
+    const spotifyApi = useSpotify();
+    const playlistId = useRecoilValue(playlistIdState );
+    const [playlist, setPlaylist] = useRecoilState(playlistState);
 
-    useEffect(() =>{
-        setColor (shuffle(colors).pop()) , []
+     useEffect(() =>{
+        setColor (shuffle(colors).pop()) , [playlistId]
     });
+
+ useEffect(() => {
+     spotifyApi
+     .getPlaylist(playlistId)
+     .then((data) => {
+      setPlaylist(data.body);
+     }).catch((err) => console.log("Something went wrong", err));
+
+ }, [spotifyApi, playlistId])
      
+ console.log("Here's the playlist >>> ", playlist)
+
     return (
         <div className='flex-grow'>
            <header className='absolute top-5 right-8'>

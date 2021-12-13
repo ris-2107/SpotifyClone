@@ -1,5 +1,5 @@
 import react, { useEffect, useState } from "react"
-// to check if added or not in server git -- is it upadted
+
 
 import {
     HomeIcon,
@@ -15,15 +15,19 @@ import {
 } from "@heroicons/react/outline"
 import { signOut, useSession } from "next-auth/react";
 import useSpotify from "../hooks/useSpotify";
-
+import { useRecoilState } from "recoil";
+import { playlistIdState } from "../.next/atoms/playlistAtom";
 
 function sidebar() {
     const {data:session, status } = useSession();
-    console.log(session)
+    console.log("The session is >>>", session)
 
     const spotifyApi = useSpotify()
     const[isOpen, setIsOpen] = useState(false)
     const [playlists, setPlaylists] = useState([])
+    const [playlistId, setPlaylistId] = useRecoilState(playlistIdState );
+
+    console.log('You picked playlist >>', playlistId)
 
     
     useEffect(() => {
@@ -86,7 +90,8 @@ function sidebar() {
 
                
                 {playlists.map((playlist) => (
-                    <p key={playlist.id} className="cursor-pointer hover:text-white">{playlist.name}</p>
+                    <p key={playlist.id} onClick={() => setPlaylistId(playlist.id)} 
+                    className="cursor-pointer hover:text-white">{playlist.name}</p>
 
                 ))}
                 

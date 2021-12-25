@@ -4,6 +4,7 @@ import Center from '../components/Center'
 import Sidebar from '../components/Sidebar'
 import Player from '../components/Player'
 
+
 // to check if added or not in server git --> in real??
 
 export default function Home() {

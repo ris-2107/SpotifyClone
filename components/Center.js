@@ -10,6 +10,7 @@ import useSpotify from "../hooks/useSpotify";
 import Songs from "./Songs";
 
 const colors=[
+    
     "from-indigo-500",
     "from-blue-500",
     "from-green-500",

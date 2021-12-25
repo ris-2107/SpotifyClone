@@ -5,7 +5,9 @@ import { getProviders, signIn } from 'next-auth/react'
 
 
 function Login({providers}) {
+
     return (
+        
         <div className='flex flex-col items-center bg-black min-h-screen justify-center'>
             <img className='w-52 mb-5 ' 
             src='https://1000logos.net/wp-content/uploads/2021/04/Spotify-logo.png' />
@@ -35,7 +37,6 @@ export async function getServerSideProps() {
     return {
         props: {
             providers,
-
         },
     };
 }
